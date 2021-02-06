@@ -24,6 +24,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.4.1",
     "aws-sdk": "^2.838.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "easyqrcodejs-nodejs": "^4.2.1"
   }
 }
