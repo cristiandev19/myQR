@@ -1,0 +1,29 @@
+{
+  "name": "myqr",
+  "version": "1.0.0",
+  "description": "Back para subir archivos a s3 y subir a mongobd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiandev19/myQR.git"
+  },
+  "keywords": [
+    "Qr",
+    "AWS",
+    "S3"
+  ],
+  "author": "Cristian Sotomayor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristiandev19/myQR/issues"
+  },
+  "homepage": "https://github.com/cristiandev19/myQR#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.4.1",
+    "aws-sdk": "^2.838.0",
+    "dotenv": "^8.2.0"
+  }
+}
