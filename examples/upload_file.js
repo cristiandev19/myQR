@@ -18,7 +18,7 @@ var uploadParams = {
   ACL          : 'public-read', // para poder ser leido publicamente
   StorageClass : 'REDUCED_REDUNDANCY' // para poder ser leido publicamente
 };
-var file = './utilities/prueba.png';
+var file = '../q.png';
 
 // Create the parameters for calling createBucket
 var bucketParams = {
@@ -35,7 +35,7 @@ fileStream.on('error', function(err) {
 });
 uploadParams.Body = fileStream;
 var path = require('path');
-uploadParams.Key = path.basename(file);
+uploadParams.Key = 'qr_prueba.png';
 
 // call S3 to retrieve upload file to specified bucket
 s3.upload(uploadParams, function (err, data) {
