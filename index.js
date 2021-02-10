@@ -24,17 +24,11 @@ app
 
 // Importamos modulos
 // const r_example = require('./src/modules/example/r_example');
-// const r_auth = require('./src/modules/auth/r_auth');
+const auth_router = require('./modules/auth/auth.router');
 // Establecemos las rutas
 app
-  .get('/home', (req, res) => {
-    console.log('hola')
-    res.send({
-      hole: 'asd'
-    })
-  })
   // .use('/example', r_example)
-  // .use('/auth', r_auth);
+  .use('/auth', auth_router);
 
 // Middleware para manejo de errores
 app
