@@ -4,7 +4,8 @@
   "description": "Back para subir archivos a s3 y subir a mongobd",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon index"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,16 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.4.1",
     "aws-sdk": "^2.838.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "easyqrcodejs-nodejs": "^4.2.1"
+    "easyqrcodejs-nodejs": "^4.2.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
