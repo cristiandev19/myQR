@@ -23,13 +23,19 @@ app
   .use(bodyParser.json({ limit: '5mb' }));
 
 // Importamos modulos
-const r_example = require('./src/modules/example/r_example');
-const r_auth = require('./src/modules/auth/r_auth');
+// const r_example = require('./src/modules/example/r_example');
+// const r_auth = require('./src/modules/auth/r_auth');
 // Establecemos las rutas
 app
-  .use('/example', r_example)
-  .use('/auth', r_auth);
-  
+  .get('/home', (req, res) => {
+    console.log('hola')
+    res.send({
+      hole: 'asd'
+    })
+  })
+  // .use('/example', r_example)
+  // .use('/auth', r_auth);
+
 // Middleware para manejo de errores
 app
   .use(logErrors)
