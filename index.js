@@ -23,11 +23,11 @@ app
   .use(bodyParser.json({ limit: '5mb' }));
 
 // Importamos modulos
-// const r_example = require('./src/modules/example/r_example');
+const admin_router = require('./modules/admin/admin.router');
 const auth_router = require('./modules/auth/auth.router');
 // Establecemos las rutas
 app
-  // .use('/example', r_example)
+  .use('/admin', admin_router)
   .use('/auth', auth_router);
 
 // Middleware para manejo de errores
