@@ -25,6 +25,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.4.1",
     "aws-sdk": "^2.838.0",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "easyqrcodejs-nodejs": "^4.2.1",
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.15",
     "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
