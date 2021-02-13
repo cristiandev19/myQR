@@ -1,8 +1,23 @@
 const AWS = require('aws-sdk');
 const { config } = require('../config/index');
 
-exports.s3UploadPromise = async (uploadParams) => {
+exports.s3UploadPromise = async ({
+  fileName, extension, bufferBody, contentType
+}) => {
   return new Promise((resolve) => {
+
+    // call S3 to retrieve upload file to specified bucket
+    const uploadParams = {
+      Bucket          : config.awsS3BucketName,
+      ACL             : 'public-read',                // para poder ser leido publicamente,
+      Key             : `${fileName}.${extension}`,
+      Body            : bufferBody,
+      ACL             : 'public-read',                // para poder ser leido publicamente
+      StorageClass    : 'REDUCED_REDUNDANCY',         // para poder ser leido publicamente
+      ContentType     : contentType,
+      ContentEncoding : 'base64',
+    };
+
     // Set the region
     AWS.config.update({region: config.awsS3Region });
 
