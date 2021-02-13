@@ -3,7 +3,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const { config } = require('../config/index');
 const opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = config.jwtSecretKey; //normally store this in process.env.secret
+opts.secretOrKey = config.authJwtSecret; //normally store this in process.env.secret
 
 // Aqui debemos cambiarlo para que llame a la BD por un id dentro del token
 module.exports = new JwtStrategy(opts, (jwt_payload, done) => {
@@ -13,4 +13,4 @@ module.exports = new JwtStrategy(opts, (jwt_payload, done) => {
     return done(null, true)
   }
   return done(null, false)
-}) 
+})
