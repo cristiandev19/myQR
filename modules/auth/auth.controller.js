@@ -13,6 +13,7 @@ exports.emailSignup = (req, res, next) => {
     const { names, lastNames, email, password } = req.body;
     // const user =
     const user = new User({ names, lastNames, email, password });
+    // const result = auth_utils.signToken({ email, isLoged: true });
     user.save();
     console.log('user', user)
     return res.status(200).send({
