@@ -11,10 +11,9 @@ exports.generateQRByUrl = async (url) => {
       // New instance with options
       const qrcode = new QRCode(options);
       const dataQR = await qrcode.toDataURL()
-      const bufferObject = await imagesUtilities.convertBase64ToBuffer(dataQR);
 
       return resolve({
-        ...bufferObject
+        dataQR
       })
     } catch (error) {
       return resolve({ error });
