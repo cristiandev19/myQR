@@ -1,8 +1,33 @@
+const passport = require('passport');
 const User = require("../../models/User");
+const auth_utils = require('./auth.utils');
+// const
 
-exports.emailLogin = (req, res, next) => {
+exports.emailLogin = async (req, res, next) => {
   try {
-    
+    console.log('res', req.body);
+    const { email, password } = req.body;
+    const [user] = await User.find({ email });
+
+    if (!user) {
+      throw new Error('El usuario no existe');
+    }
+
+    console.log('user', user);
+    const tokenObject = auth_utils.signToken(user);
+    const { names, lastNames } = user;
+    const userObj = {
+      names,
+      lastNames,
+      email
+    };
+
+    return res.status(200).json({
+      success   : true,
+      user      : userObj,
+      token     : tokenObject.token,
+      expiresIn : tokenObject.expires
+    });
   } catch (error) {
     return next(error);
   }
@@ -11,13 +36,23 @@ exports.emailLogin = (req, res, next) => {
 exports.emailSignup = (req, res, next) => {
   try {
     const { names, lastNames, email, password } = req.body;
-    // const user =
     const user = new User({ names, lastNames, email, password });
-    // const result = auth_utils.signToken({ email, isLoged: true });
     user.save();
     console.log('user', user)
     return res.status(200).send({
       message: 'Funciono'
+    })
+  } catch (error) {
+    return next(error);
+  }
+}
+
+exports.protected = (req, res, next) => {
+  try {
+
+    // ahora tenemos el req.user  con la informacion del usuario
+    return res.status(200).send({
+      message: 'Funciono estas autentificado'
     })
   } catch (error) {
     return next(error);
