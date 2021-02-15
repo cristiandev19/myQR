@@ -1,8 +1,8 @@
 const imagesUtilities = require('../utilities/images');
 const QRCode = require('easyqrcodejs-nodejs');
 
-exports.generateQRByUrl = async (url) => {
-  return new Promise((resolve) => {
+exports.generateQRByUrl = (url) => {
+  return new Promise(async (resolve) => {
     try {
       // Options
       const options = {
