@@ -12,8 +12,6 @@ console.log('opts', opts);
 // Aqui debemos cambiarlo para que llame a la BD por un id dentro del token
 module.exports = new JwtStrategy(opts, async (jwt_payload, done) => {
   console.log('jwt_payload', jwt_payload);
-  // return done(null, true)
-
   User.findOne({_id: jwt_payload.sub}, (err, user) => {
     console.log('user', user);
     if (err) {
