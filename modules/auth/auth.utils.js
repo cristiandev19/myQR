@@ -1,10 +1,26 @@
 const jwt = require('jsonwebtoken');
 const { config } = require('../../config/index');
+const ms = require('ms');
 
-exports.signToken = (payload, secret = config.jwtSecretKey ) => {
-  return jwt.sign(payload, secret, {
-    expiresIn: config.authJwtExpireTime
+exports.signToken = (user, secret = config.jwtSecretKey ) => {
+  console.log('user', user)
+  const _id = user._id;
+  const expiresIn = config.authJwtExpireTime;
+
+  const payload = {
+    sub: _id,
+    iat: Date.now()
+  };
+  console.log('payload', payload)
+  const signedToken = jwt.sign(payload, secret, {
+    expiresIn: expiresIn
   });
+  // const expira = ms(expiresIn);
+  // console.log('expira', expira)
+  return {
+    token: "Bearer " + signedToken,
+    expires: ms(expiresIn)
+  }
 }
 
 exports.verifyToken = (token, secret = config.jwtSecretKey) => {
@@ -21,3 +37,4 @@ exports.verifyToken = (token, secret = config.jwtSecretKey) => {
     }
   }
 }
+
