@@ -8,7 +8,6 @@ const express    = require('express'),
 //passport stuff
 const passport      = require('passport'),
       jwtStrategy  = require('./strategies/jwt');
-console.log(jwtStrategy)
 passport.use(jwtStrategy);
 
 // Hacemos la conexion a mongodb
