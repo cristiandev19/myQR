@@ -2,13 +2,16 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  names              : String,
-  lastNames          : String,
   email              : { type: String, unique: true },
   password           : String,
+  profile            : {
+    names     : String,
+    lastNames : String,
+    picture   : { type: String, default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' },
+  },
   // Cuando quieres cambiar la contraseña, se usa el Token
   passwordResetToken : String,
-  emailVerified      : Boolean
+  emailVerified      : { type: Boolean, default: false }
 }, { timestamps: true });
 
 
