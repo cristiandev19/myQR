@@ -36,12 +36,16 @@ exports.emailLogin = async (req, res, next) => {
 exports.emailSignup = (req, res, next) => {
   try {
     const { names, lastNames, email, password } = req.body;
-    const user = new User({ names, lastNames, email, password });
+    const profile = {
+      names,
+      lastNames
+    }
+    const user = new User({ email, password, profile });
     user.save();
     console.log('user', user)
     return res.status(200).send({
       message: 'Funciono'
-    })
+    });
   } catch (error) {
     return next(error);
   }
