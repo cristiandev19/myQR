@@ -1,7 +1,6 @@
 const passport = require('passport');
 const User = require("../../models/User");
 const auth_utils = require('./auth.utils');
-// const
 
 exports.emailLogin = async (req, res, next) => {
   try {

@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
   emailVerified      : { type: Boolean, default: false }
 }, { timestamps: true });
 
-
 /**
  * Password hash middleware.
  * Middlewar sirve para antes de GUARDAR ALGO
@@ -32,7 +31,6 @@ userSchema.pre('save', function save(next) {
     });
   });
 });
-
 
 /**
  * Helper method for validating user's password.
@@ -60,4 +58,3 @@ user.comparePassword(password, (err, isMatch) => {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
